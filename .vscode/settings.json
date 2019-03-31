@@ -1,4 +1,6 @@
 {
     "python.pythonPath": "C:\\Users\\lilei\\Anaconda3\\envs\\flask\\python.exe",
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "python.formatting.provider": "black",
+    "python.linting.pylintEnabled": false
 }
