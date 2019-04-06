@@ -4,7 +4,7 @@
 {% for product in page_obj %}
 <p>{{ product.name }}</p>
 <p>
-    <a href="{% url "product" product.slug %}">See it here</a>
+    <a href="{% url 'product_detail' product.slug %}">See it here</a>
 </p>
 {% if not forloop.last %}
 <hr>
@@ -23,16 +23,14 @@
         </li>
         {% endif %}
         {% for pagenum in page_obj.paginator.page_range %}
-        <li class="page-item{% if page_obj.number == pagenum %}
-active{% endif %}">
+        <li class="page-item{% if page_obj.number == pagenum %}active{% endif %}">
             <a class="page-link" href="?page={{pagenum}}">{{pagenum}}
             </a>
         </li>
         {% endfor %}
         {% if page_obj.has_next %}
         <li class="page-item">
-            <a class="page-link" href="?page={{page_obj.next_
-page_number}}">Next</a>
+            <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
         </li>
         {% else %}
         <li class="page-item disabled">

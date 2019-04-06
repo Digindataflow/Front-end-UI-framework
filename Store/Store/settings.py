@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'markdownify',
     'product.apps.ProductConfig',
-
+    'account.apps.AccountConfig',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +135,5 @@ MEDIA_URL = "/media/"
 ### form ###
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+### auth user model ###
+AUTH_USER_MODEL = 'account.User'

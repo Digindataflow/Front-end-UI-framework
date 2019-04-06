@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.shortcuts import get_object_or_404
 from product import models
 
@@ -23,3 +24,7 @@ class ProductListView(ListView):
         else:
             products = models.Product.objects.active()
         return products.order_by("name")
+
+class ProductDetailView(DetailView):
+    template_name = "product/product_detail.html"
+    model = models.Product
