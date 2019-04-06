@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'toys.apps.ToysConfig',
     'drones.apps.DronesConfig',
     'django_filters',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
