@@ -1,9 +1,7 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.views.generic.list import ListView
+from django.shortcuts import get_object_or_404, render
 from django.views.generic.detail import DetailView
-from django.shortcuts import get_object_or_404
+from django.views.generic.list import ListView
+
 from product import models
 
 class ProductListView(ListView):
