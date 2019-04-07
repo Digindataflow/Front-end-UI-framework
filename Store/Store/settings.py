@@ -69,6 +69,7 @@ TEMPLATES = [
             'product/templates/',
             'account/templates/',
             'shoppingcart/templates/',
+            os.path.join(BASE_DIR, 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

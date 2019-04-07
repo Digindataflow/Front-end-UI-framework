@@ -20,7 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.main_admin.urls),
+    path("office-admin/", admin.central_office_admin.urls),
+    path("dispatch-admin/", admin.dispatchers_admin.urls),
     re_path('^about-us/$', TemplateView.as_view(template_name="aboutus.html"), name='about_us'),
     re_path("^$", TemplateView.as_view(template_name="home.html"), name='home'),
     path('account/', include('account.urls')),

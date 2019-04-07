@@ -1,0 +1,98 @@
+[
+    {
+        "model": "auth.group",
+        "fields": {
+            "name": "Employees",
+            "permissions": [
+                [
+                    "add_address",
+                    "account",
+                    "address"
+                ],
+                [
+                    "change_address",
+                    "account",
+                    "address"
+                ],
+                [
+                    "delete_address",
+                    "account",
+                    "address"
+                ],
+                [
+                    "change_order",
+                    "shoppingcart",
+                    "order"
+                ],
+                [
+                    "add_orderline",
+                    "shoppingcart",
+                    "orderline"
+                ],
+                [
+                    "change_orderline",
+                    "shoppingcart",
+                    "orderline"
+                ],
+                [
+                    "delete_orderline",
+                    "shoppingcart",
+                    "orderline"
+                ],
+                [
+                    "add_product",
+                    "product",
+                    "product"
+                ],
+                [
+                    "change_product",
+                    "product",
+                    "product"
+                ],
+                [
+                    "delete_product",
+                    "product",
+                    "product"
+                ],
+                [
+                    "add_productimage",
+                    "product",
+                    "productimage"
+                ],
+                [
+                    "change_productimage",
+                    "product",
+                    "productimage"
+                ],
+                [
+                    "delete_productimage",
+                    "product",
+                    "productimage"
+                ],
+                [
+                    "change_producttag",
+                    "product",
+                    "producttag"
+                ]
+            ]
+        }
+    },
+    {
+        "model": "auth.group",
+        "fields": {
+            "name": "Dispatchers",
+            "permissions": [
+                [
+                    "change_orderline",
+                    "shoppingcart",
+                    "orderline"
+                ],
+                [
+                    "change_product",
+                    "product",
+                    "product"
+                ]
+            ]
+        }
+    }
+]
