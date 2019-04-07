@@ -1,16 +1,16 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import re_path
 
 from product import views
 
 urlpatterns = [
-    path(
-        "products/<slug:tag>/",
+    re_path(
+        r"products/(?P<tag>\w+)/",
         views.ProductListView.as_view(),
         name="product_list",
     ),
-    path(
-        "product/<slug:slug>/",
+    re_path(
+        r"^product/(?P<slug>\w+)/$",
         views.ProductDetailView.as_view(),
         name="product_detail",
     ),

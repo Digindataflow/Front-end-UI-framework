@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'markdownify',
     'product.apps.ProductConfig',
     'account.apps.AccountConfig',
+    'shoppingcart.apps.ShoppingcartConfig',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'shoppingcart.middlewares.basket_middleware',
 ]
 
 ROOT_URLCONF = 'Store.urls'
@@ -63,7 +65,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             'product/templates/',
-            'account/templates',
+            'account/templates/',
+            'shoppingcart/templates/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

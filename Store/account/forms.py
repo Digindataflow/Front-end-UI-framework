@@ -23,9 +23,9 @@ class UserCreationForm(DjangoUserCreationForm):
         )
         message = "Welcome{}".format(self.cleaned_data["email"])
         send_mail(
-            "Welcome to BookTime",
+            "Welcome to the Store",
             message,
-            "site@booktime.domain",
+            "account.manager@store.domain",
             [self.cleaned_data["email"]],
             fail_silently=True,
         )
