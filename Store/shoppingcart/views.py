@@ -1,9 +1,15 @@
+import django_filters
+from django import forms as django_forms
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db import models as django_models
 from django.http import HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404, render
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse, reverse_lazy
 from django.views.generic import FormView, TemplateView
-from shoppingcart import models, forms
+from django_filters.views import FilterView
+
+from shoppingcart import forms, models
+
 
 def add_to_basket(request):
     product = get_object_or_404(
@@ -69,3 +75,28 @@ class AddressSelectionView(LoginRequiredMixin, FormView):
 
 class CheckoutDoneView(TemplateView):
     template_name = "shoppingcart/order_done.html"
+
+class DateInput(django_forms.DateInput):
+    input_type = 'date'
+
+class OrderFilter(django_filters.FilterSet):
+    class Meta:
+        model = models.Order
+        fields = {
+            'user__email': ['icontains'],
+            'status': ['exact'],
+            'date_updated': ['gt', 'lt'],
+            'date_added': ['gt', 'lt'],
+        }
+        filter_overrides = {
+            django_models.DateTimeField: {
+                'filter_class': django_filters.DateFilter,
+                'extra': lambda f:{'widget': DateInput}
+            }
+        }
+
+class OrderView(UserPassesTestMixin, FilterView):
+    filterset_class = OrderFilter
+    login_url = reverse_lazy("login")
+    def test_func(self):
+        return self.request.user.is_staff is True

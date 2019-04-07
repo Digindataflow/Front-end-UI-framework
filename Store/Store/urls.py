@@ -25,6 +25,7 @@ urlpatterns = [
     re_path("^$", TemplateView.as_view(template_name="home.html"), name='home'),
     path('account/', include('account.urls')),
     path('', include('product.urls')),
-    path('order/', include('shoppingcart.urls'))
+    path('order/', include('shoppingcart.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

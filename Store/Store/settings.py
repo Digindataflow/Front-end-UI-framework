@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django_tables2',
     'crispy_forms',
     'markdownify',
+    'widget_tweaks',
+    'rest_framework',
     'product.apps.ProductConfig',
     'account.apps.AccountConfig',
     'shoppingcart.apps.ShoppingcartConfig',
@@ -144,3 +146,20 @@ AUTH_USER_MODEL = 'account.User'
 
 ### login ###
 LOGIN_REDIRECT_URL = "/"
+
+### django tables2 ###
+DJANGO_TABLES2_TEMPLATE = 'django_tables2/bootstrap.html'
+
+### restful ###
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':
+        ('rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication'),
+    'DEFAULT_PERMISSION_CLASSES':
+        ('rest_framework.permissions.DjangoModelPermissions',),
+    'DEFAULT_FILTER_BACKENDS':
+        ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100
+}
