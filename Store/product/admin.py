@@ -13,6 +13,14 @@ from product import models
 
 logger = logging.getLogger(__name__)
 
+def make_active(self, request, queryset):
+    queryset.update(active=True)
+make_active.short_description = "Mark selected items as active"
+
+def make_inactive(self, request, queryset):
+    queryset.update(active=False)
+make_inactive.short_description = "Mark selected items as inactive"
+
 @admin.register(models.Product, admin.central_office_admin)
 @admin.register(models.Product, admin.main_admin)
 class ProductAdmin(admin.ModelAdmin):
@@ -22,6 +30,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     prepopulated_fields = {"slug": ("name",)}
     autocomplete_fields = ('tags',)
+    actions = [make_active, make_inactive]
 
     # tag slugs also appear in urls, therefore it is a
     # property only owners can change
